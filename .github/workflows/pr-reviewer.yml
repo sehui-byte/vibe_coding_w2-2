@@ -1,0 +1,15 @@
+name: PR Reviewer
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  add-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Reviewers
+        uses: madrapps/add-reviewers@v1
+        with:
+          reviewers: user1,user2
+          repo-token: ${{ secrets.GITHUB_TOKEN }} 

@@ -1,0 +1,20 @@
+name: PR Auto Comment
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Checklist Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### PR 체크리스트\n- [ ] 코드 리뷰 요청 전 테스트 완료\n- [ ] 관련 이슈 연결\n- [ ] 변경사항 설명 작성`
+            }) 

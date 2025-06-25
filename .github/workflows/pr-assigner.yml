@@ -1,0 +1,15 @@
+name: PR Assigner
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign PR
+        uses: pozil/auto-assign-issue@v1
+        with:
+          assignees: user1,user2
+          repo-token: ${{ secrets.GITHUB_TOKEN }} 

@@ -1,0 +1,20 @@
+name: Issue Auto Comment
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue Guide Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `이슈 등록 감사합니다!\n- [ ] 이슈 내용이 명확한지 확인해주세요.\n- [ ] 관련 PR이 있다면 연결해주세요.`
+            }) 

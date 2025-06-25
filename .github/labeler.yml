@@ -1,0 +1,10 @@
+# PR/이슈 자동 라벨링 규칙 예시
+
+backend:
+  - 'backend/**'
+frontend:
+  - 'frontend/**'
+docs:
+  - 'docs/**'
+test:
+  - '**/test_*' 
